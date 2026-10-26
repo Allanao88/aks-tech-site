@@ -47,8 +47,8 @@ function ServicesSection() {
           </div>
 
           <p className="services-intro">
-            Soluções digitais pensadas para tornar sua empresa mais
-            profissional, eficiente e preparada para crescer.
+            Escolhemos a solução a partir do seu objetivo, do cenário atual da empresa
+            e das prioridades do projeto. O escopo é alinhado antes do desenvolvimento.
           </p>
         </div>
 
@@ -75,7 +75,7 @@ function ServicesSection() {
         </div>
 
         <div className="services-footer">
-          <p>Tem um desafio específico na sua empresa?</p>
+          <p>Não sabe qual solução faz mais sentido para sua empresa?</p>
           <a className="services-contact-link" href="#contato">
             Vamos encontrar uma solução <span aria-hidden="true">↗</span>
           </a>

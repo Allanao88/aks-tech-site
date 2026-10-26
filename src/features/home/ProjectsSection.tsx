@@ -35,7 +35,7 @@ function ProjectsSection() {
           <div>
             <span className="section-eyebrow">
               <span className="eyebrow-dot" />
-              POSSIBILIDADES EM PRÁTICA
+              EXEMPLOS DE SOLUÇÕES
             </span>
 
             <h2>
@@ -46,8 +46,8 @@ function ProjectsSection() {
           </div>
 
           <p>
-            Cada negócio tem seus desafios. A tecnologia certa transforma
-            necessidades em experiências digitais mais eficientes.
+            Conheça exemplos visuais de soluções que podemos desenvolver para
+            sua empresa. Cada projeto começa com o entendimento da sua necessidade.
           </p>
         </div>
 
@@ -146,8 +146,9 @@ function ProjectsSection() {
         </div>
 
         <p className="projects-disclaimer">
-          Conceitos ilustrativos para demonstrar possibilidades de soluções
-          digitais.
+          Os painéis e layouts apresentados são ilustrativos, não representam
+          necessariamente projetos entregues a clientes. O CRM Lead Flow é um
+          produto próprio em desenvolvimento.
         </p>
       </div>
     </section>

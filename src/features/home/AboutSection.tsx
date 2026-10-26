@@ -73,6 +73,36 @@ function AboutSection() {
             </article>
           ))}
 
+          <div className="about-process">
+            <span className="about-principles-label">
+              COMO FUNCIONA O PROJETO
+            </span>
+
+            <article className="about-principle">
+              <span className="about-principle-number">01</span>
+              <div>
+                <h3>Entendimento</h3>
+                <p>Conversamos sobre o desafio, os objetivos e o cenário atual.</p>
+              </div>
+            </article>
+
+            <article className="about-principle">
+              <span className="about-principle-number">02</span>
+              <div>
+                <h3>Escopo e proposta</h3>
+                <p>Alinhamos entregáveis, condições e próximos passos antes de iniciar.</p>
+              </div>
+            </article>
+
+            <article className="about-principle">
+              <span className="about-principle-number">03</span>
+              <div>
+                <h3>Desenvolvimento e entrega</h3>
+                <p>Executamos o trabalho conforme o escopo aprovado e validamos a solução.</p>
+              </div>
+            </article>
+          </div>
+
           <div className="about-signature">
             <span className="about-signature-mark">AKS</span>
             <span>TECNOLOGIA A SERVIÇO DO SEU NEGÓCIO</span>
