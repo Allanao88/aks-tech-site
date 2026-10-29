@@ -1,4 +1,14 @@
-const projects = [
+interface Project {
+  number: string
+  category: string
+  title: string
+  description: string
+  type: string
+  visual: string
+  mockup: 'crm' | 'site' | 'dashboard'
+}
+
+const projects: Project[] = [
   {
     number: '01',
     category: 'PRODUTO PRÓPRIO',
@@ -6,7 +16,8 @@ const projects = [
     description:
       'CRM em desenvolvimento para centralizar leads, acompanhar oportunidades comerciais e integrar a gestão de estoque.',
     type: 'EM DESENVOLVIMENTO',
-    visual: 'project-visual-system',
+    visual: 'project-visual-crm',
+    mockup: 'crm',
   },
   {
     number: '02',
@@ -16,6 +27,7 @@ const projects = [
       'Sites responsivos para apresentar serviços, fortalecer marcas e facilitar o contato entre empresas e clientes.',
     type: 'WEB DESIGN',
     visual: 'project-visual-site',
+    mockup: 'site',
   },
   {
     number: '03',
@@ -24,10 +36,14 @@ const projects = [
     description:
       'Aplicações, integrações e automações para reduzir tarefas manuais e transformar dados em informações úteis.',
     type: 'DADOS E SISTEMAS',
-    visual: 'project-visual-landing',
+    visual: 'project-visual-dashboard',
+    mockup: 'dashboard',
   },
 ]
+
 function ProjectsSection() {
+  const totalProjects = String(projects.length).padStart(2, '0')
+
   return (
     <section id="projetos" className="projects-section">
       <div className="projects-container">
@@ -57,10 +73,59 @@ function ProjectsSection() {
               <div className={`project-visual ${project.visual}`}>
                 <div className="project-visual-top">
                   <span>AKS / TECH</span>
-                  <span>{project.number} — 03</span>
+                  <span>
+                    {project.number} — {totalProjects}
+                  </span>
                 </div>
 
-                {project.number === '01' && (
+                {project.mockup === 'crm' && (
+                  <div className="mockup-crm">
+                    <div className="mockup-crm-header">
+                      <div className="mockup-crm-title">
+                        <span className="mockup-crm-dot" />
+                        <span>FUNIL DE VENDAS</span>
+                      </div>
+                      <span className="mockup-crm-badge">5 ETAPAS</span>
+                    </div>
+
+                    <div className="mockup-crm-funnel">
+                      <div className="mockup-crm-col">
+                        <span className="mockup-crm-col-title">Novo lead</span>
+                        <div className="mockup-crm-card active" />
+                        <div className="mockup-crm-card" />
+                      </div>
+                      <div className="mockup-crm-col">
+                        <span className="mockup-crm-col-title">Qualificação</span>
+                        <div className="mockup-crm-card" />
+                        <div className="mockup-crm-card" />
+                      </div>
+                      <div className="mockup-crm-col">
+                        <span className="mockup-crm-col-title">Proposta</span>
+                        <div className="mockup-crm-card active" />
+                      </div>
+                      <div className="mockup-crm-col">
+                        <span className="mockup-crm-col-title">Negociação</span>
+                        <div className="mockup-crm-card" />
+                      </div>
+                      <div className="mockup-crm-col">
+                        <span className="mockup-crm-col-title">Ganho</span>
+                        <div className="mockup-crm-card won" />
+                      </div>
+                    </div>
+
+                    <div className="mockup-crm-stock">
+                      <div className="mockup-crm-stock-header">
+                        <span>ESTOQUE INTEGRADO</span>
+                        <strong>84% DISPONÍVEL</strong>
+                      </div>
+                      <div className="mockup-crm-stock-bar">
+                        <span style={{ width: '84%' }} />
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {project.mockup === 'site' && (
                   <div className="mockup-site">
                     <div className="mockup-site-nav">
                       <span className="mockup-brand">SUA MARCA.</span>
@@ -83,25 +148,7 @@ function ProjectsSection() {
                   </div>
                 )}
 
-                {project.number === '02' && (
-                  <div className="mockup-landing">
-                    <span className="mockup-label">UMA NOVA EXPERIÊNCIA</span>
-                    <strong>
-                      Mais clientes.
-                      <br />
-                      Mais possibilidades.
-                    </strong>
-                    <span className="mockup-landing-copy">
-                      Uma solução feita para o seu negócio.
-                    </span>
-                    <span className="mockup-landing-button">
-                      QUERO SABER MAIS ↗
-                    </span>
-                    <div className="mockup-landing-orb" />
-                  </div>
-                )}
-
-                {project.number === '03' && (
+                {project.mockup === 'dashboard' && (
                   <div className="mockup-dashboard">
                     <div className="mockup-dashboard-sidebar">
                       <span className="mockup-dashboard-logo">A.</span>

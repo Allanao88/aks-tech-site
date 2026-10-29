@@ -435,14 +435,32 @@
 .project-visual {
   position: relative;
   display: flex;
-  min-height: 285px;
+  min-height: 310px;
   overflow: hidden;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 38px 24px 28px;
+  padding: 42px 20px 48px;
   background:
     radial-gradient(ellipse at 50% 45%, rgba(204, 255, 0, 0.09), transparent 65%),
     #151715;
+}
+
+.project-visual-crm {
+  background:
+    radial-gradient(ellipse at 45% 45%, rgba(115, 130, 94, 0.15), transparent 65%),
+    #151715;
+}
+
+.project-visual-site {
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(204, 255, 0, 0.09), transparent 65%),
+    #151715;
+}
+
+.project-visual-dashboard {
+  background:
+    radial-gradient(ellipse at 80% 35%, rgba(204, 255, 0, 0.13), transparent 55%),
+    #191a18;
 }
 
 .project-visual-landing {
@@ -474,15 +492,143 @@
 .project-type {
   position: absolute;
   right: 16px;
-  bottom: 16px;
-  padding: 7px 9px;
+  bottom: 12px;
+  padding: 6px 9px;
   border: 1px solid rgba(204, 255, 0, 0.28);
   border-radius: 5px;
-  background: rgba(17, 17, 17, 0.75);
+  background: rgba(17, 17, 17, 0.85);
   color: var(--color-primary);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.08em;
+  z-index: 2;
+}
+
+.mockup-crm {
+  display: flex;
+  width: 100%;
+  max-width: 315px;
+  min-height: 195px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 13px 11px;
+  border: 1px solid #3b4035;
+  border-radius: 7px;
+  background: #20221e;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.3);
+  transform: rotate(-1deg);
+}
+
+.mockup-crm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #32352c;
+}
+
+.mockup-crm-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #a3a69c;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.mockup-crm-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+.mockup-crm-badge {
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: #2a2d26;
+  color: var(--color-primary);
+  font-size: 7px;
+  font-weight: 700;
+}
+
+.mockup-crm-funnel {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 4px;
+  margin: 8px 0;
+}
+
+.mockup-crm-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 4px 2px;
+  border-radius: 3px;
+  background: #171916;
+}
+
+.mockup-crm-col-title {
+  color: #8d9287;
+  font-size: 6.5px;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mockup-crm-card {
+  height: 15px;
+  border: 1px solid #34382e;
+  border-radius: 2px;
+  background: #232620;
+}
+
+.mockup-crm-card.active {
+  border-left: 2px solid var(--color-primary);
+}
+
+.mockup-crm-card.won {
+  border-left: 2px solid #57c7ff;
+  background: #1b282c;
+}
+
+.mockup-crm-stock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 7px;
+  border-top: 1px solid #32352c;
+}
+
+.mockup-crm-stock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #a3a69c;
+  font-size: 7px;
+  letter-spacing: 0.08em;
+}
+
+.mockup-crm-stock-header strong {
+  color: var(--color-primary);
+  font-size: 7.5px;
+}
+
+.mockup-crm-stock-bar {
+  height: 5px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #2c3027;
+}
+
+.mockup-crm-stock-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--color-primary);
 }
 
 .mockup-site {
@@ -1124,9 +1270,11 @@
   }
 
   .project-visual {
-    min-height: 300px;
+    min-height: 320px;
+    padding: 44px 16px 48px;
   }
 
+  .mockup-crm,
   .mockup-site,
   .mockup-dashboard {
     max-width: 360px;
