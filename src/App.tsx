@@ -11,8 +11,11 @@ import './styles/sections.css'
 function App() {
   return (
     <>
+      <a href="#conteudo" className="skip-link">
+        Pular para o conteúdo
+      </a>
       <Header />
-      <main>
+      <main id="conteudo" tabIndex={-1}>
         <HeroSection />
         <ServicesSection />
         <ProjectsSection />

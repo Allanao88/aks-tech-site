@@ -37,7 +37,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="hero-visual" aria-label="Conceito visual da AKS Tech">
+        <div className="hero-visual" aria-hidden="true">
           <div className="visual-orbit orbit-one" />
           <div className="visual-orbit orbit-two" />
 

@@ -8,6 +8,7 @@ function ContactSection() {
   const [service, setService] = useState('')
   const [message, setMessage] = useState('')
   const [errors, setErrors] = useState<{ name?: string; message?: string }>({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const nameInputRef = useRef<HTMLInputElement>(null)
   const messageInputRef = useRef<HTMLTextAreaElement>(null)
@@ -48,6 +49,8 @@ function ContactSection() {
       'Sobre meu projeto:',
       trimmedMessage,
     ].join('\n')
+
+    setIsSubmitting(true)
 
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`
     const w = window.open(whatsappUrl, '_blank')
@@ -213,6 +216,12 @@ function ContactSection() {
           <button className="contact-submit" type="submit">
             Enviar pelo WhatsApp <span aria-hidden="true">↗</span>
           </button>
+
+          {isSubmitting && (
+            <p className="contact-status" role="status" aria-live="polite">
+              Abrindo o WhatsApp…
+            </p>
+          )}
 
           <p className="contact-form-disclaimer">
             Seus dados serão incluídos na mensagem que você poderá revisar

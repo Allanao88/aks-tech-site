@@ -70,7 +70,7 @@ function ProjectsSection() {
         <div className="projects-grid">
           {projects.map((project) => (
             <article className="project-card" key={project.number}>
-              <div className={`project-visual ${project.visual}`}>
+              <div className={`project-visual ${project.visual}`} aria-hidden="true">
                 <div className="project-visual-top">
                   <span>AKS / TECH</span>
                   <span>
