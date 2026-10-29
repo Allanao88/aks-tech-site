@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useState, useRef, type FormEvent } from 'react'
 
 const WHATSAPP_NUMBER = '5511964644711'
 
@@ -7,30 +7,54 @@ function ContactSection() {
   const [email, setEmail] = useState('')
   const [service, setService] = useState('')
   const [message, setMessage] = useState('')
+  const [errors, setErrors] = useState<{ name?: string; message?: string }>({})
+
+  const nameInputRef = useRef<HTMLInputElement>(null)
+  const messageInputRef = useRef<HTMLTextAreaElement>(null)
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
+    const trimmedName = name.trim()
+    const trimmedMessage = message.trim()
+
+    const newErrors: { name?: string; message?: string } = {}
+    if (!trimmedName) {
+      newErrors.name = 'Por favor, informe seu nome.'
+    }
+    if (!trimmedMessage) {
+      newErrors.message = 'Por favor, descreva sua necessidade ou ideia.'
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors)
+      if (newErrors.name) {
+        nameInputRef.current?.focus()
+      } else if (newErrors.message) {
+        messageInputRef.current?.focus()
+      }
+      return
+    }
+
+    setErrors({})
+
     const whatsappMessage = [
       'Olá! Vim pelo site da AKS - Tech.',
       '',
-      `Nome: ${name.trim()}`,
+      `Nome: ${trimmedName}`,
       `E-mail: ${email.trim()}`,
       `Serviço de interesse: ${service}`,
       '',
       'Sobre meu projeto:',
-      message.trim(),
+      trimmedMessage,
     ].join('\n')
 
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`
-    const whatsappWindow = window.open(
-      whatsappUrl,
-      '_blank',
-      'noopener,noreferrer',
-    )
-
-    if (!whatsappWindow) {
-      window.location.href = whatsappUrl
+    const w = window.open(whatsappUrl, '_blank')
+    if (w) {
+      w.opener = null
+    } else {
+      window.location.assign(whatsappUrl)
     }
   }
 
@@ -84,15 +108,32 @@ function ContactSection() {
           <div className="contact-field">
             <label htmlFor="contact-name">Nome</label>
             <input
+              ref={nameInputRef}
               id="contact-name"
               name="name"
               autoComplete="name"
               placeholder="Como podemos chamar você?"
               value={name}
-              onChange={(event) => setName(event.target.value)}
+              onChange={(event) => {
+                setName(event.target.value)
+                if (errors.name) {
+                  setErrors((prev) => ({ ...prev, name: undefined }))
+                }
+              }}
               required
               maxLength={100}
+              aria-invalid={errors.name ? 'true' : undefined}
+              aria-describedby={errors.name ? 'contact-name-error' : undefined}
             />
+            {errors.name && (
+              <p
+                id="contact-name-error"
+                className="contact-field-error"
+                role="alert"
+              >
+                {errors.name}
+              </p>
+            )}
           </div>
 
           <div className="contact-field">
@@ -141,15 +182,32 @@ function ContactSection() {
           <div className="contact-field">
             <label htmlFor="contact-message">Como podemos ajudar?</label>
             <textarea
+              ref={messageInputRef}
               id="contact-message"
               name="message"
               placeholder="Descreva brevemente sua ideia ou necessidade..."
               value={message}
-              onChange={(event) => setMessage(event.target.value)}
+              onChange={(event) => {
+                setMessage(event.target.value)
+                if (errors.message) {
+                  setErrors((prev) => ({ ...prev, message: undefined }))
+                }
+              }}
               required
               rows={4}
               maxLength={1500}
+              aria-invalid={errors.message ? 'true' : undefined}
+              aria-describedby={errors.message ? 'contact-message-error' : undefined}
             />
+            {errors.message && (
+              <p
+                id="contact-message-error"
+                className="contact-field-error"
+                role="alert"
+              >
+                {errors.message}
+              </p>
+            )}
           </div>
 
           <button className="contact-submit" type="submit">

@@ -1450,3 +1450,15 @@
     padding-top: 20px;
   }
 }
+
+.contact-field-error {
+  margin-top: 6px;
+  color: #ff6b6b;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.contact-field input[aria-invalid="true"],
+.contact-field textarea[aria-invalid="true"] {
+  border-color: #ff6b6b;
+}
