@@ -924,7 +924,7 @@
 
 .contact-container {
   display: grid;
-  width: min(100%, 1080px);
+  width: min(100%, var(--container-width));
   grid-template-columns: 0.9fr 1fr;
   align-items: start;
   gap: clamp(40px, 8vw, 100px);
