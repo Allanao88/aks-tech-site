@@ -26,6 +26,8 @@ function Footer() {
               alt="AKS - Tech"
               className="footer-logo"
               loading="lazy"
+              width="1499"
+              height="261"
             />
           </a>
 

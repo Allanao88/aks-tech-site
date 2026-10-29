@@ -11,6 +11,8 @@ function Header() {
             src="/images/aks-tech-logo.png"
             alt="AKS - Tech"
             className="header-logo"
+            width="1499"
+            height="261"
           />
         </a>
 
