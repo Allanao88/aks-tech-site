@@ -1,6 +1,6 @@
+import { buildWhatsappUrl, DEFAULT_WHATSAPP_MESSAGE } from '../config/contact'
 
-const WHATSAPP_URL =
-  'https://wa.me/5511964644711?text=Ol%C3%A1%21%20Gostaria%20de%20conhecer%20as%20solu%C3%A7%C3%B5es%20da%20AKS%20-%20Tech.'
+const WHATSAPP_URL = buildWhatsappUrl(DEFAULT_WHATSAPP_MESSAGE)
 
 const navigation = [
   { label: 'Serviços', href: '#servicos' },

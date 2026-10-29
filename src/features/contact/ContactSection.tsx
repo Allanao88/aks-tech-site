@@ -1,6 +1,9 @@
 import { useState, useRef, type FormEvent } from 'react'
-
-const WHATSAPP_NUMBER = '5511964644711'
+import {
+  DEFAULT_WHATSAPP_MESSAGE,
+  buildLeadMessage,
+  buildWhatsappUrl,
+} from '../../config/contact'
 
 function ContactSection() {
   const [name, setName] = useState('')
@@ -39,20 +42,16 @@ function ContactSection() {
 
     setErrors({})
 
-    const whatsappMessage = [
-      'Olá! Vim pelo site da AKS - Tech.',
-      '',
-      `Nome: ${trimmedName}`,
-      `E-mail: ${email.trim()}`,
-      `Serviço de interesse: ${service}`,
-      '',
-      'Sobre meu projeto:',
-      trimmedMessage,
-    ].join('\n')
+    const whatsappMessage = buildLeadMessage({
+      name: trimmedName,
+      email,
+      service,
+      message: trimmedMessage,
+    })
 
     setIsSubmitting(true)
 
-    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`
+    const whatsappUrl = buildWhatsappUrl(whatsappMessage)
     const w = window.open(whatsappUrl, '_blank')
     if (w) {
       w.opener = null
@@ -83,7 +82,7 @@ function ContactSection() {
 
           <a
             className="contact-whatsapp"
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Olá! Gostaria de conhecer as soluções da AKS - Tech.')}`}
+            href={buildWhatsappUrl(DEFAULT_WHATSAPP_MESSAGE)}
             target="_blank"
             rel="noreferrer"
           >
