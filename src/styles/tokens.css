@@ -19,4 +19,12 @@
   --container-width: 1160px;
   --radius-card: 18px;
   --radius-button: 8px;
+
+  /* Glass UI tokens */
+  --glass-bg: rgba(20, 20, 20, 0.72);
+  --glass-bg-fallback: #181818;
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-reflection: linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0) 35%);
+  --glass-blur: 16px;
+  --glass-shadow: 0 24px 60px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
